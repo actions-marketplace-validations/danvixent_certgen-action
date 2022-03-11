@@ -11,5 +11,3 @@ elif [[ "$OS" == *"mac"* ]] || [[ "$OS" == *"darwin"* ]]; then
 else
     exit
 fi
-
-exit 0
