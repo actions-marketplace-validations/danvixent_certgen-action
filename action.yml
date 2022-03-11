@@ -23,5 +23,3 @@ runs:
   steps: 
     - run: ${{ github.action_path }}/download-certgen.sh ${{ inputs.os }} ${{ inputs.certgen-version }} ${{ inputs.output-folder }}
       shell: bash
-    - run: ./certgen
-      shell: bash

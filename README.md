@@ -1,6 +1,6 @@
 # certgen-action
 
-A github action that runs danvixent/certgen
+A github action that pulls danvixent/certgen
 
 This is a Github Action that can be used in your Github Workflow to generate & install certificates for localhost
 
