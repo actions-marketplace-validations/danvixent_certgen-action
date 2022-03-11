@@ -1,0 +1,25 @@
+name: 'Certgen action'
+description: 'A github action that runs danvixent/certgen'
+
+branding:
+  icon: 'activity'
+  color: 'green'
+
+inputs:
+  version:  
+    description: 'Describe the version of certgen'
+    required: true
+    default: '0.1.2'
+  os:
+    description: 'Operating system'
+    required: true
+
+runs:
+  using: "composite"
+  steps: 
+    - run: ${{ github.action_path }}/download-certgen.sh ${{ inputs.os }} ${{ inputs.version }}
+      shell: bash
+    - run: tar -xvzf certgen.tar.gz
+      shell: bash
+    - run: ./certgen
+      shell: bash
