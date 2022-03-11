@@ -1,11 +1,15 @@
 name: 'Certgen action'
-description: 'A github action that runs danvixent/certgen'
+description: 'A github action that pulls danvixent/certgen'
 
 branding:
   icon: 'activity'
   color: 'green'
 
 inputs:
+  output-folder:
+    description: 'Describe the version output folder of certgen'
+    required: true
+    default: '.'
   certgen-version:  
     description: 'Describe the version of certgen'
     required: true
@@ -17,9 +21,7 @@ inputs:
 runs:
   using: "composite"
   steps: 
-    - run: ${{ github.action_path }}/download-certgen.sh ${{ inputs.os }} ${{ inputs.certgen-version }}
-      shell: bash
-    - run: tar -xvzf certgen.tar.gz
+    - run: ${{ github.action_path }}/download-certgen.sh ${{ inputs.os }} ${{ inputs.certgen-version }} ${{ inputs.output-folder }}
       shell: bash
     - run: ./certgen
       shell: bash

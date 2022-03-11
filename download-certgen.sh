@@ -1,6 +1,6 @@
 OS=$(echo $1 | tr '[:upper:]' '[:lower:]')
 version=$2
-outfile="certgen.tar.gz"
+outfile=$3
 
 if [[ "$OS" == *"linux"* ]] || [[ "$OS" == *"ubuntu"* ]]; then
   echo "downloading linux version of ngrok"
@@ -11,3 +11,5 @@ elif [[ "$OS" == *"mac"* ]] || [[ "$OS" == *"darwin"* ]]; then
 else
     exit
 fi
+
+tar -xvzf $outfile
