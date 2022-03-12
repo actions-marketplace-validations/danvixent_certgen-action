@@ -13,7 +13,7 @@ inputs:
   certgen-version:  
     description: 'Describe the version of certgen'
     required: true
-    default: '0.1.2'
+    default: '0.1.6'
   os:
     description: 'Operating system'
     required: true
