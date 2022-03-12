@@ -10,9 +10,9 @@ This action accepts the following parameters
 
 | Name| Description | Required  | Default |
 | ------------- |-------------|-----|-----|
-| timeout | After this timeout the deployment will automatically shutdown the tunelling and therefore stop the action. (max is 6 hours) | No | 1h |
-| port | The port in localhost to forward traffic from/to  | Yes | - |
-| ngrok_authtoken | Your ngrok authtoken| Yes | - |
+| output-folder | Folder to put the certgen binary in | No | . |
+| os | The name of the host os. Supported values include (linux, ubuntu, darwin, mac)  | Yes | - |
+| certgen-version: | Version of certgen to download | No | 0.1.6 |
 
 Here is an example of using this action:
 
@@ -34,8 +34,10 @@ jobs:
     - name: Run container
       run: docker-compose up -d 
     
-    - uses: danvixent/certgen-action@0.1.0
+    - name: Pull certgen
+      uses: danvixent/certgen-action@v0.1.6
       with:
-        os: linux
-        version: 0.1.2
+        output-folder: $(go env GOPATH)/bin
+        os: ${{ runner.os }}
+        certgen-version: 0.2.0
 ```
